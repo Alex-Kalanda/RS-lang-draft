@@ -14,13 +14,13 @@ export interface Word {
   textMeaningTranslate: string;
   wordTranslate: string;
 }
-export interface User {
-  name: string;
-  email: string;
-}
 export interface SignInParam {
   email: string;
   password: string;
+}
+export interface User {
+  name: string;
+  email: string;
 }
 export interface PostUser extends User {
   password: string;
@@ -39,4 +39,14 @@ export interface AuthParam {
 export interface Tokens {
   token: string;
   refreshToken: string;
+}
+export interface FetchParam {
+  method: string;
+  withCredentials?: boolean;
+  headers: {
+    Authorization?: string;
+    Accept?: string;
+    'Content-Type'?: string;
+  };
+  body?: string;
 }

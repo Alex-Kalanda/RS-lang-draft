@@ -1,5 +1,5 @@
-import { baseUrl, createUser, getWordById, getWords, signIn } from './API';
-import { AuthParam, Tokens, Word } from './Interface';
+import { baseUrl, createUser, deleteUser, getUserById, getWordById, getWords, putUser, signIn } from './API';
+import { AuthParam, PostUser, ResponseUser, Tokens, Word } from './Interface';
 import { setTokens } from './helpers';
 
 const testPageParam = {
@@ -8,16 +8,17 @@ const testPageParam = {
   wordId: '5e9f5ee35eb9e72bc21af961',
   user: {
     name: 'alex',
-    email: 'justifyContent@gmail.com',
+    email: 'Pisynator@gmail.com',
     password: 'ghjuhfvvf12345',
   },
-  userId: '61fd268bcd9ffb00160592cd',
+  userId: localStorage.getItem('id') || '',
+  userIdNonExistent: '11fd268bcd9ffb00160592cd',
   logInParam: {
-    email: 'justifyContent@gmail.com',
+    email: 'Pisynator@gmail.com',
     password: 'ghjuhfvvf12345',
   },
   logInUncorrect: {
-    email: 'justifyContent@gmail.com',
+    email: 'Pisynator@gmail.com',
     password: 'ghjuhfvvf1345',
   },
 };
@@ -52,9 +53,19 @@ export const drawWords = (container: HTMLElement): void => {
   });
 };
 
-signIn(testPageParam.logInParam).then((response: Response) => {
+/*deleteUser(testPageParam.userId).then((resp: boolean) => {
+  console.log(resp);
+});*/
+
+/*createUser(testPageParam.user).then((response: ResponseUser) => {
+  localStorage.setItem('id', response.id);
+  console.log(response);
+});*/
+
+/*signIn(testPageParam.logInParam).then((response: Response) => {
   if (response.ok) {
     response.json().then((response: AuthParam) => {
+      localStorage.setItem('id', response.userId);
       const tokens: Tokens = {
         token: response.token,
         refreshToken: response.refreshToken,
@@ -64,7 +75,11 @@ signIn(testPageParam.logInParam).then((response: Response) => {
   } else {
     throw new Error('Invalid email or password');
   }
-});
+});*/
 
-//USERS
-export const;
+getUserById(testPageParam.userId).then((resp: Response) => {
+  const response: Promise<PostUser> = resp.json();
+  response.then((resp: PostUser) => {
+    console.log(resp);
+  });
+});
