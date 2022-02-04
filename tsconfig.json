@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "*": ["*"]
+    },
+    "strict": true,
+    "outDir": "./dist/",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "module": "esnext",
+    "target": "es5",
+    "allowJs": true,
+    "moduleResolution": "node",
+
+  },
+  "include": ["./*.ts", "./app/components/*/*.ts", "./app/src/*.ts", "./app/components/*.ts", "./custom.d.ts"],
+  "exclude": ["dist", "build", "node_modules"]
+}
