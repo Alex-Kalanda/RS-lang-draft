@@ -53,30 +53,6 @@ export const drawWords = (container: HTMLElement): void => {
   });
 };
 
-/*deleteUser(testPageParam.userId).then((resp: boolean) => {
-  console.log(resp);
-});*/
-
-/*createUser(testPageParam.user).then((response: ResponseUser) => {
-  localStorage.setItem('id', response.id);
-  console.log(response);
-});*/
-
-/*signIn(testPageParam.logInParam).then((response: Response) => {
-  if (response.ok) {
-    response.json().then((response: AuthParam) => {
-      localStorage.setItem('id', response.userId);
-      const tokens: Tokens = {
-        token: response.token,
-        refreshToken: response.refreshToken,
-      };
-      setTokens(tokens);
-    });
-  } else {
-    throw new Error('Invalid email or password');
-  }
-});*/
-
 getUserById(testPageParam.userId).then((resp: Response) => {
   const response: Promise<PostUser> = resp.json();
   response.then((resp: PostUser) => {
